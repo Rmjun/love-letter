@@ -17,15 +17,8 @@
             --text-light: #6b6b6b;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Noto Serif SC', serif;
@@ -35,384 +28,149 @@
             line-height: 1.8;
         }
 
-        /* 浮动爱心背景 */
         .floating-hearts {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
+            position: fixed; width: 100%; height: 100%; top: 0; left: 0;
+            pointer-events: none; z-index: 0; overflow: hidden;
         }
-
         .heart {
-            position: absolute;
-            font-size: 20px;
-            animation: floatUp 15s linear infinite;
-            opacity: 0;
+            position: absolute; font-size: 20px;
+            animation: floatUp 15s linear infinite; opacity: 0;
         }
-
         @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
         }
 
-        /* 开场封面 */
         .cover {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #e8b4b8 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-            transition: opacity 1s ease, transform 1s ease;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 1000; cursor: pointer; transition: opacity 1s ease, transform 1s ease;
         }
-
-        .cover.hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(1.1);
-        }
-
-        .cover-heart {
-            font-size: 80px;
-            animation: heartPulse 1.5s ease-in-out infinite;
-        }
-
+        .cover.hidden { opacity: 0; pointer-events: none; transform: scale(1.1); }
+        .cover-heart { font-size: 80px; animation: heartPulse 1.5s ease-in-out infinite; }
         @keyframes heartPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
         }
-
         .cover-title {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 48px;
-            color: #c48b9f;
-            margin-top: 30px;
-            letter-spacing: 8px;
+            font-family: 'Ma Shan Zheng', cursive; font-size: 48px;
+            color: #c48b9f; margin-top: 30px; letter-spacing: 8px;
         }
+        .cover-subtitle { font-size: 16px; color: #8b6b73; margin-top: 20px; letter-spacing: 4px; }
+        .cover-date { position: absolute; bottom: 60px; font-size: 14px; color: #a08b8f; letter-spacing: 2px; }
 
-        .cover-subtitle {
-            font-size: 16px;
-            color: #8b6b73;
-            margin-top: 20px;
-            letter-spacing: 4px;
-        }
+        .main-container { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 40px 20px; }
 
-        .cover-date {
-            position: absolute;
-            bottom: 60px;
-            font-size: 14px;
-            color: #a08b8f;
-            letter-spacing: 2px;
-        }
-
-        /* 主内容区 */
-        .main-container {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* 每封信 */
         .letter {
             background: rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 60px 0;
+            border-radius: 20px; padding: 40px; margin: 60px 0;
             box-shadow: 0 20px 60px rgba(196, 139, 159, 0.15);
-            position: relative;
-            opacity: 0;
-            transform: translateY(50px);
+            position: relative; opacity: 0; transform: translateY(50px);
             transition: all 0.8s ease;
         }
-
-        .letter.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .letter.visible { opacity: 1; transform: translateY(0); }
         .letter::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border: 1px solid var(--rose);
-            border-radius: 15px;
-            pointer-events: none;
+            content: ''; position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px solid var(--rose); border-radius: 15px; pointer-events: none;
         }
-
         .letter-date {
             display: inline-block;
             background: linear-gradient(135deg, var(--rose) 0%, var(--deep-rose) 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            color: white; padding: 8px 20px; border-radius: 20px;
+            font-size: 14px; margin-bottom: 20px; letter-spacing: 2px;
         }
-
         .letter-theme {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 32px;
-            color: var(--deep-rose);
-            margin-bottom: 25px;
-            text-align: center;
+            font-family: 'Ma Shan Zheng', cursive; font-size: 32px;
+            color: var(--deep-rose); margin-bottom: 25px; text-align: center;
         }
-
-        .letter-content {
-            font-size: 16px;
-            line-height: 2;
-            color: var(--text-dark);
-            text-align: justify;
-        }
-
-        .letter-content p {
-            margin-bottom: 20px;
-            text-indent: 2em;
-        }
-
+        .letter-content { font-size: 16px; line-height: 2; color: var(--text-dark); text-align: justify; }
+        .letter-content p { margin-bottom: 20px; text-indent: 2em; }
         .letter-content .highlight {
-            background: linear-gradient(transparent 60%, var(--soft-pink) 60%);
-            padding: 0 5px;
+            background: linear-gradient(transparent 60%, var(--soft-pink) 60%); padding: 0 5px;
         }
-
         .letter-content .quote {
-            font-family: 'ZCOOL XiaoWei', serif;
-            font-size: 18px;
-            color: var(--deep-rose);
-            text-align: center;
-            margin: 30px 0;
-            padding: 20px;
-            border-left: 3px solid var(--rose);
-            background: var(--soft-pink);
+            font-family: 'ZCOOL XiaoWei', serif; font-size: 18px; color: var(--deep-rose);
+            text-align: center; margin: 30px 0; padding: 20px;
+            border-left: 3px solid var(--rose); background: var(--soft-pink);
             border-radius: 0 10px 10px 0;
         }
-
         .letter-signature {
-            text-align: right;
-            margin-top: 30px;
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 24px;
-            color: var(--deep-rose);
+            text-align: right; margin-top: 30px; font-family: 'Ma Shan Zheng', cursive;
+            font-size: 24px; color: var(--deep-rose);
         }
 
-        /* 时间线 */
         .timeline {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
+            position: fixed; right: 30px; top: 50%; transform: translateY(-50%); z-index: 10;
         }
-
         .timeline-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--rose);
-            margin: 15px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--rose); margin: 15px 0; cursor: pointer;
+            transition: all 0.3s ease; position: relative;
         }
-
-        .timeline-dot.active {
-            background: var(--deep-rose);
-            transform: scale(1.5);
-        }
-
+        .timeline-dot.active { background: var(--deep-rose); transform: scale(1.5); }
         .timeline-dot:hover::after {
-            content: attr(data-date);
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-size: 12px;
-            white-space: nowrap;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            content: attr(data-date); position: absolute; right: 20px; top: 50%;
+            transform: translateY(-50%); background: white;
+            padding: 5px 15px; border-radius: 5px; font-size: 12px;
+            white-space: nowrap; box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
-        /* 告白页面 */
         .confession {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #e8b4b8 100%);
-            padding: 40px 20px;
-            margin-top: 60px;
+            padding: 40px 20px; margin-top: 60px;
         }
-
         .confession-title {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 48px;
-            color: var(--deep-rose);
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease;
+            font-family: 'Ma Shan Zheng', cursive; font-size: 48px;
+            color: var(--deep-rose); margin-bottom: 40px; animation: fadeInUp 1s ease;
         }
-
         .confession-content {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 60px 50px;
-            max-width: 700px;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.95); border-radius: 30px;
+            padding: 60px 50px; max-width: 700px; text-align: center;
             box-shadow: 0 30px 80px rgba(196, 139, 159, 0.2);
         }
+        .confession-text { font-size: 20px; line-height: 2.2; color: var(--text-dark); }
+        .confession-text p { margin-bottom: 25px; }
+        .confession-heart { font-size: 60px; animation: heartPulse 1.5s ease-in-out infinite; margin: 30px 0; }
+        .confession-yes { font-family: 'Ma Shan Zheng', cursive; font-size: 36px; color: var(--deep-rose); margin-top: 30px; }
 
-        .confession-text {
-            font-size: 20px;
-            line-height: 2.2;
-            color: var(--text-dark);
-        }
+        .footer { text-align: center; padding: 60px 20px; background: var(--cream); }
+        .footer-text { font-family: 'Ma Shan Zheng', cursive; font-size: 24px; color: var(--deep-rose); }
+        .footer-date { font-size: 14px; color: var(--text-light); margin-top: 15px; letter-spacing: 2px; }
 
-        .confession-text p {
-            margin-bottom: 25px;
-        }
-
-        .confession-heart {
-            font-size: 60px;
-            animation: heartPulse 1.5s ease-in-out infinite;
-            margin: 30px 0;
-        }
-
-        .confession-yes {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 36px;
-            color: var(--deep-rose);
-            margin-top: 30px;
-        }
-
-        /* 底部 */
-        .footer {
-            text-align: center;
-            padding: 60px 20px;
-            background: var(--cream);
-        }
-
-        .footer-text {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 24px;
-            color: var(--deep-rose);
-        }
-
-        .footer-date {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-top: 15px;
-            letter-spacing: 2px;
-        }
-
-        /* 音乐控制 */
         .music-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: white;
-            border: 2px solid var(--rose);
-            cursor: pointer;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            transition: all 0.3s ease;
+            position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px;
+            border-radius: 50%; background: white; border: 2px solid var(--rose);
+            cursor: pointer; z-index: 100; display: flex; justify-content: center;
+            align-items: center; font-size: 20px; transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
+        .music-btn:hover { transform: scale(1.1); background: var(--rose); color: white; }
 
-        .music-btn:hover {
-            transform: scale(1.1);
-            background: var(--rose);
-            color: white;
-        }
-
-        /* 动画 */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 响应式 */
         @media (max-width: 768px) {
-            .cover-title {
-                font-size: 36px;
-            }
-
-            .letter {
-                padding: 25px 20px;
-                margin: 40px 0;
-            }
-
-            .letter-theme {
-                font-size: 26px;
-            }
-
-            .letter-content {
-                font-size: 15px;
-            }
-
-            .timeline {
-                display: none;
-            }
-
-            .confession-title {
-                font-size: 36px;
-            }
-
-            .confession-content {
-                padding: 40px 25px;
-            }
-
-            .confession-text {
-                font-size: 17px;
-            }
+            .cover-title { font-size: 36px; }
+            .letter { padding: 25px 20px; margin: 40px 0; }
+            .letter-theme { font-size: 26px; }
+            .letter-content { font-size: 15px; }
+            .timeline { display: none; }
+            .confession-title { font-size: 36px; }
+            .confession-content { padding: 40px 25px; }
+            .confession-text { font-size: 17px; }
         }
     </style>
 </head>
 <body>
-    <!-- 浮动爱心 -->
     <div class="floating-hearts" id="hearts"></div>
 
-    <!-- 封面 -->
     <div class="cover" id="cover" onclick="startJourney()">
         <div class="cover-heart">💌</div>
         <h1 class="cover-title">致 宝宝</h1>
@@ -420,23 +178,21 @@
         <p class="cover-date">2026.05.09</p>
     </div>
 
-    <!-- 时间线 -->
     <div class="timeline" id="timeline">
         <div class="timeline-dot" data-date="4月30日" data-index="0"></div>
-        <div class="timeline-dot" data-date="5月1日" data-index="1"></div>
-        <div class="timeline-dot" data-date="5月2日" data-index="2"></div>
-        <div class="timeline-dot" data-date="5月3日" data-index="3"></div>
-        <div class="timeline-dot" data-date="5月4日" data-index="4"></div>
-        <div class="timeline-dot" data-date="5月5日" data-index="5"></div>
-        <div class="timeline-dot" data-date="5月6日" data-index="6"></div>
-        <div class="timeline-dot" data-date="5月7日" data-index="7"></div>
-        <div class="timeline-dot" data-date="5月8日" data-index="8"></div>
-        <div class="timeline-dot" data-date="5月9日" data-index="9"></div>
+        <div class="timeline-dot" data-date="5月2日" data-index="1"></div>
+        <div class="timeline-dot" data-date="5月3日" data-index="2"></div>
+        <div class="timeline-dot" data-date="5月4日" data-index="3"></div>
+        <div class="timeline-dot" data-date="5月5日" data-index="4"></div>
+        <div class="timeline-dot" data-date="5月6日" data-index="5"></div>
+        <div class="timeline-dot" data-date="5月7日" data-index="6"></div>
+        <div class="timeline-dot" data-date="5月8日" data-index="7"></div>
+        <div class="timeline-dot" data-date="5月9日" data-index="8"></div>
     </div>
 
-    <!-- 主内容 -->
     <div class="main-container" id="letters">
-        <!-- 第一封 -->
+
+        <!-- ====== 第1封：主动（3月19日）- 保持不变 ====== -->
         <div class="letter" data-index="0">
             <span class="letter-date">4月30日 · 第一封</span>
             <h2 class="letter-theme">主 动</h2>
@@ -453,12 +209,28 @@
             </div>
         </div>
 
-        <!-- 第二封 -->
+        <!-- ====== 第2封：同居日常（3月27日）====== -->
         <div class="letter" data-index="1">
-            <span class="letter-date">5月1日 · 第二封</span>
+            <span class="letter-date">5月2日 · 第二封</span>
+            <h2 class="letter-theme">同 居</h2>
+            <div class="letter-content">
+                <p>3月27日，我们开始住在一起。</p>
+                <p>从那天起，生活里多了很多小事。一起做饭，我负责炒菜，你在旁边备菜洗菜。你会时不时塞一颗小零食过来，理直气壮地说：<span class="highlight">"这是我爱吃的，好吃！"</span></p>
+                <p>那一刻我在想：这样的日子，要是能一直这样下去就好了。</p>
+                <p>还有那次，你忘了面包过期了。我吃了一口才发现，立马阻止你。你太节约了，舍不得扔，说泡一泡还能吃。我看你那副心疼的样子，又无奈又心疼又好笑——你就是那样的人，舍不得浪费。</p>
+                <p>我假装生气，把它扔掉了。</p>
+                <p>其实我不是生气。我只是舍不得让你吃坏肚子。</p>
+                <p><span class="highlight">你那种傻傻的善良，那种不肯浪费的温柔，都是我想好好守护的东西。</span></p>
+                <p class="letter-signature">宝宝 ❤️</p>
+            </div>
+        </div>
+
+        <!-- ====== 第3封：爬山（4月5日）====== -->
+        <div class="letter" data-index="2">
+            <span class="letter-date">5月3日 · 第三封</span>
             <h2 class="letter-theme">守 护</h2>
             <div class="letter-content">
-                <p>青城山那天，人很多。</p>
+                <p>4月5日，青城山，人很多。</p>
                 <p>我怕把你弄丢，一直默默跟在你后面，眼睛半步都不敢离开。</p>
                 <p>你走走停停，时不时回头看我一眼——你知道吗？每一次你回头，我心里都特别暖。</p>
                 <p>然后你就拉起我的手，和我一起往前走。</p>
@@ -474,29 +246,13 @@
             </div>
         </div>
 
-        <!-- 第三封 -->
-        <div class="letter" data-index="2">
-            <span class="letter-date">5月2日 · 第三封</span>
-            <h2 class="letter-theme">日 常</h2>
-            <div class="letter-content">
-                <p>3月27日，我们开始住在一起。</p>
-                <p>从那天起，生活里多了很多小事。一起做饭，我负责炒菜，你在旁边备菜洗菜。你会时不时塞一颗小零食过来，理直气壮地说：<span class="highlight">"这是我爱吃的，好吃！"</span></p>
-                <p>那一刻我在想：这样的日子，要是能一直这样下去就好了。</p>
-                <p>还有那次，你忘了面包过期了。我吃了一口才发现，立马阻止你。你太节约了，舍不得扔，说泡一泡还能吃。我看你那副心疼的样子，又无奈又心疼又好笑——你就是那样的人，舍不得浪费。</p>
-                <p>我假装生气，把它扔掉了。</p>
-                <p>其实我不是生气。我只是舍不得让你吃坏肚子。</p>
-                <p><span class="highlight">你那种傻傻的善良，那种不肯浪费的温柔，都是我想好好守护的东西。</span></p>
-                <p class="letter-signature">宝宝 ❤️</p>
-            </div>
-        </div>
-
-        <!-- 第四封 -->
+        <!-- ====== 第4封：晒太阳露营（4月4日）====== -->
         <div class="letter" data-index="3">
-            <span class="letter-date">5月3日 · 第四封</span>
+            <span class="letter-date">5月4日 · 第四封</span>
             <h2 class="letter-theme">阳 光</h2>
             <div class="letter-content">
-                <p>还记得那次中午去露营吗？</p>
-                <p>阳光很好，我们躺在草地上，什么都不做，只是晒太阳。</p>
+                <p>4月4日，中午，阳光正好。</p>
+                <p>我们找了个地方，躺在草地上，什么都不做，只是晒太阳。</p>
                 <p><span class="highlight">你趁我不注意，偷偷拍了我的照片。</span></p>
                 <p>我假装没看见。但其实，镜头对准我的时候，余光都捕捉到了。那种感觉，像是被小心翼翼地收藏着，有点不好意思，又有点……温暖。</p>
                 <p>后来你给我看那些照片，我才意识到：原来在你眼里，我是那个样子的。</p>
@@ -507,12 +263,12 @@
             </div>
         </div>
 
-        <!-- 第五封 -->
+        <!-- ====== 第5封：六圈散步（3月24日）====== -->
         <div class="letter" data-index="4">
-            <span class="letter-date">5月4日 · 第五封</span>
+            <span class="letter-date">5月5日 · 第五封</span>
             <h2 class="letter-theme">六 圈</h2>
             <div class="letter-content">
-                <p>潮音水岸公园，六圈。</p>
+                <p>3月24日，潮音水岸公园，六圈。</p>
                 <p>为了减肥，我们一圈一圈地走。这个数字听起来不算多，但走起来，每一步都有你的声音。</p>
                 <p>我们聊了很多——生活里的事，最近看的电影，各自喜欢听的歌，还有一些不着边际的幻想。聊着聊着，时间就过去了。我回头一看，才发现已经走了六圈。</p>
                 <p>你还记得我们聊了什么吗？</p>
@@ -524,13 +280,13 @@
             </div>
         </div>
 
-        <!-- 第六封 -->
+        <!-- ====== 第6封：生日+三星堆（4月8日）====== -->
         <div class="letter" data-index="5">
-            <span class="letter-date">5月5日 · 第六封</span>
+            <span class="letter-date">5月6日 · 第六封</span>
             <h2 class="letter-theme">公 开</h2>
             <div class="letter-content">
                 <p>有两个时刻，我想永远记住。</p>
-                <p>第一个是你的生日。我参与了你的第一个生日，你发了朋友圈，照片里是我们紧紧握在一起的手。那一刻，我觉得自己被写进了你的生活里。</p>
+                <p>第一个是4月8日，你的生日。我参与了你的第一个生日，你发了朋友圈，照片里是我们紧紧握在一起的手。那一刻，我觉得自己被写进了你的生活里。</p>
                 <p>第二个是三星堆。我们一起逛了博物馆，拍了合照。也是那一次，<span class="highlight">你在朋友圈公开了我的照片。</span></p>
                 <p>你知道我有多开心吗？</p>
                 <p>不是那种张扬的开心，是那种……心里满满当当的踏实。像是一直在等一个确认，而你给了我。</p>
@@ -539,9 +295,9 @@
             </div>
         </div>
 
-        <!-- 第七封 -->
+        <!-- ====== 第7封：接送（日常）====== -->
         <div class="letter" data-index="6">
-            <span class="letter-date">5月6日 · 第七封</span>
+            <span class="letter-date">5月7日 · 第七封</span>
             <h2 class="letter-theme">接 送</h2>
             <div class="letter-content">
                 <p>有件事，我从来没认真告诉过你。</p>
@@ -549,18 +305,17 @@
                 <p>不是有空才去，不是因为顺路，而是——只要能见到你，那一天就不算白过。</p>
                 <p>你知道吗，每次看见你从公司大门里走出来，脸上的表情从疲惫慢慢变成放松，那一刻，我觉得一切都值得。</p>
                 <p>我不需要你说什么，只要你在那里，笑着向我走来，世界就安静了。</p>
-                <p>就像那次你忘了带伞和糯米饭，你说"我只有这一把"，我立马说"我等会儿给你送过来"。</p>
+                <p>就像那次你忘了带伞，你说"我只有这一把"，我立马说"我等会儿给你送过来"。</p>
                 <p>你问我"你咋办"，我说"我拖个地就过来"。</p>
                 <p>其实我想说的是：<span class="highlight">你的事，永远排在第一位。</span></p>
-                <p>这份坚持，不是表演，是我最想让你知道的事：</p>
                 <p class="quote">和你在一起的每一件小事，我都在乎。</p>
                 <p class="letter-signature">宝宝 ❤️</p>
             </div>
         </div>
 
-        <!-- 第八封 -->
+        <!-- ====== 第8封：表白在行动中 ====== -->
         <div class="letter" data-index="7">
-            <span class="letter-date">5月7日 · 第八封</span>
+            <span class="letter-date">5月8日 · 第八封</span>
             <h2 class="letter-theme">表白在行动中</h2>
             <div class="letter-content">
                 <p>你问过我很多次：<span class="highlight">"你为什么还不表白？"</span></p>
@@ -574,31 +329,15 @@
                 <p>藏在每一个我想见你、想陪你、想保护你的念头里。</p>
                 <p>这些，才是我真正的情话。</p>
                 <p>但我发现，有些话，不说出来是不行的。</p>
-                <p class="quote">所以，5月9日，我会把藏在行动里的那些话，亲口告诉你。</p>
+                <p class="quote">所以，明天，我会把藏在行动里的那些话，亲口告诉你。</p>
                 <p class="letter-signature">宝宝 ❤️</p>
             </div>
         </div>
 
-        <!-- 第九封 -->
-        <div class="letter" data-index="8">
-            <span class="letter-date">5月8日 · 第九封</span>
-            <h2 class="letter-theme">前 夜</h2>
-            <div class="letter-content">
-                <p>再过十几个小时，我就要勇敢走向你了。</p>
-                <p>说实话，有点紧张。写这封信的时候，心跳比平时快了好几拍。</p>
-                <p>我把从3月18日到现在的每一件事都认真想了想。你主动加我微信的那个晚上，吾悦广场的娃娃机，青城山上你等我，露营时你偷偷拍我的照片，潮音水岸公园的六圈，一起做饭的那个下午，那块过期面包，你的生日，三星堆的合照，还有每天接你下班时你走向我的样子。</p>
-                <p>这些画面拼在一起，我更加确定了。</p>
-                <p><span class="highlight">我的心意，是认真的。</span></p>
-                <p>明天，我会把所有的话都当面说给你听。</p>
-                <p>今晚，好好睡。</p>
-                <p class="quote">明天，换我走向你。</p>
-                <p class="letter-signature">宝宝 ❤️</p>
-            </div>
-        </div>
     </div>
 
     <!-- 告白页面 -->
-    <div class="confession" data-index="9">
+    <div class="confession" data-index="8">
         <h1 class="confession-title">5月9日 · 告白日</h1>
         <div class="confession-content">
             <div class="confession-heart">💕</div>
@@ -625,21 +364,17 @@
         </div>
     </div>
 
-    <!-- 底部 -->
     <div class="footer">
         <p class="footer-text">从3月18日到5月9日，每一天都值得被记住。</p>
         <p class="footer-date">2026.05.09</p>
     </div>
 
-    <!-- 音乐按钮 -->
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
 
     <script>
-        // 创建浮动爱心
         function createHearts() {
             const container = document.getElementById('hearts');
             const hearts = ['❤️', '💕', '💖', '💗', '💝', '💘', '🩷', '🤍'];
-            
             for (let i = 0; i < 20; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
@@ -651,16 +386,12 @@
             }
         }
 
-        // 开始旅程
         function startJourney() {
             document.getElementById('cover').classList.add('hidden');
-            setTimeout(() => {
-                document.getElementById('cover').style.display = 'none';
-            }, 1000);
+            setTimeout(() => { document.getElementById('cover').style.display = 'none'; }, 1000);
             playMusic();
         }
 
-        // 音乐控制
         let isPlaying = false;
         const audio = new Audio('https://raw.githubusercontent.com/Rmjun/love-letter/main/music/%E6%BB%A1%E7%9B%AE%E6%98%9F%E6%B2%B3%E7%9A%86%E6%98%AF%E4%BD%A0.mp3');
         audio.loop = true;
@@ -680,46 +411,31 @@
             audio.play().then(() => {
                 isPlaying = true;
                 document.getElementById('musicBtn').innerHTML = '🎵';
-            }).catch(() => {
-                console.log('需要用户交互才能播放音乐');
-            });
+            }).catch(() => { console.log('需要用户交互才能播放音乐'); });
         }
 
-        // 滚动动画
         function handleScroll() {
             const letters = document.querySelectorAll('.letter, .confession');
             const dots = document.querySelectorAll('.timeline-dot');
-            
             letters.forEach((letter, index) => {
                 const rect = letter.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
-                
-                if (rect.top < windowHeight * 0.8) {
-                    letter.classList.add('visible');
-                }
-                
-                // 更新时间线
+                if (rect.top < windowHeight * 0.8) { letter.classList.add('visible'); }
                 if (rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5) {
                     dots.forEach(dot => dot.classList.remove('active'));
-                    if (dots[index]) {
-                        dots[index].classList.add('active');
-                    }
+                    if (dots[index]) { dots[index].classList.add('active'); }
                 }
             });
         }
 
-        // 时间线点击
         document.querySelectorAll('.timeline-dot').forEach(dot => {
             dot.addEventListener('click', () => {
                 const index = dot.dataset.index;
                 const letters = document.querySelectorAll('.letter, .confession');
-                if (letters[index]) {
-                    letters[index].scrollIntoView({ behavior: 'smooth' });
-                }
+                if (letters[index]) { letters[index].scrollIntoView({ behavior: 'smooth' }); }
             });
         });
 
-        // 初始化
         createHearts();
         window.addEventListener('scroll', handleScroll);
         handleScroll();
